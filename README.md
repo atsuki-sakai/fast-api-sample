@@ -218,7 +218,62 @@ firebase deploy --only firestore:rules
 
 ---
 
-## **追加の注意点**
-- 本番環境にデプロイする前に、必ずローカルでAPIエンドポイントをテストしてください。
-- 開発環境と本番環境で異なる環境変数を使用するように設定してください。
-- 本番環境では、Firestoreルールを適切に設定して不正アクセスを防止してください。
+## **開発用ブランチを切って継続的に機能を追加する方法**
+
+### **1. Gitリポジトリの準備**
+プロジェクトディレクトリに移動し、リモートリポジトリを確認します：
+```bash
+git remote -v
+```
+
+### **2. 開発用ブランチの作成**
+新しいブランチを作成してチェックアウトします。ブランチ名には機能や目的を明示する名前を付けます：
+```bash
+git checkout -b feature/add-new-endpoint
+```
+
+### **3. 作業内容の実装**
+コードの変更や新機能の実装を行います。
+
+### **4. 変更のステージングとコミット**
+変更を確認し、ステージングしてコミットします：
+```bash
+git status
+git add .
+git commit -m "Add a new endpoint for item details"
+```
+
+### **5. リモートリポジトリへのプッシュ**
+新しいブランチをリモートリポジトリにプッシュします：
+```bash
+git push origin feature/add-new-endpoint
+```
+
+### **6. プルリクエストの作成**
+GitHubやGitLabなどでプルリクエスト（Pull Request）を作成し、他のメンバーにレビューを依頼します。
+
+### **7. レビューと修正**
+レビューコメントを反映し、必要ならブランチに再度コミットします：
+```bash
+git commit -m "Fix review comments"
+git push origin feature/add-new-endpoint
+```
+
+### **8. ブランチのマージ**
+レビューが完了したら、開発ブランチをメインブランチ（例：main または develop）にマージします：
+```bash
+git checkout main
+git pull origin main
+git merge feature/add-new-endpoint
+```
+
+### **9. 古いブランチの削除**
+マージが完了したら、不要になった開発ブランチを削除します：
+```bash
+git branch -d feature/add-new-endpoint
+git push origin --delete feature/add-new-endpoint
+```
+
+### **10. CI/CD パイプラインの確認**
+新しいコードがCI/CDパイプラインで正しくデプロイされることを確認します。
+
