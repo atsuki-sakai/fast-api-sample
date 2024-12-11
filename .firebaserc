@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "firebase use --add": "firestore-fastapi-444417"
+  },
+  "targets": {},
+  "etags": {}
+}

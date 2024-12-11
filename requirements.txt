@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+google-cloud-firestore
+pydantic
+redis
+pytest
+pytest-asyncio
+httpx
+

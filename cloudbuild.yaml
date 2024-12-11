@@ -1,0 +1,35 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    [
+      'buildx',
+      'build',
+      '--platform=linux/amd64',
+      '-t',
+      'asia-northeast1-docker.pkg.dev/$PROJECT_ID/firestore-api',
+      '.'
+    ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    ['push', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/firestore-api']
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    [
+      'run',
+      'deploy',
+      'firestore-api',
+      '--image',
+      'asia-northeast1-docker.pkg.dev/$PROJECT_ID/firestore-api',
+      '--region',
+      'asia-northeast1',
+      '--platform',
+      'managed',
+      '--allow-unauthenticated',
+      '--set-env-vars',
+      'ENVIRONMENT=production,DEBUG=False'
+    ]
+
+images:
+- 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/firestore-api'
