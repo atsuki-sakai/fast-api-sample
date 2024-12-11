@@ -28,7 +28,8 @@ steps:
       'managed',
       '--allow-unauthenticated',
       '--set-env-vars',
-      'ENVIRONMENT=production,DEBUG=False'
+      'ENVIRONMENT=production,DEBUG=False',
+      '--service-account=firebase-adminsdk-cfaga@firestore-fastapi-444417.iam.gserviceaccount.com'
     ]
 
 images:

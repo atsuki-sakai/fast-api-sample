@@ -143,6 +143,8 @@ docker stop redis-test && docker rm redis-test
 
 ## **GCPへのデプロイ**
 
+### "8080"ポートではなくFast API標準の"8000"ポートに統一する
+
 ### **1. DockerイメージをビルドしてArtifact Registryにプッシュ**
 Dockerを使用してイメージをビルドし、Artifact Registryにプッシュします：
 ```bash

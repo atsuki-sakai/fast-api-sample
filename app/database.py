@@ -22,5 +22,5 @@ def get_firestore_client():
         return firestore.Client(credentials=credentials)
     
     # 本番環境（Cloud Run）ではデフォルト認証を使用
-    return firestore.Client()
+    return firestore.client
 

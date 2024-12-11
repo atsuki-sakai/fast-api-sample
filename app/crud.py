@@ -17,6 +17,8 @@ version = "1.0.0"
 def create_app() -> FastAPI:
     app = FastAPI(title=app_name, version=version)
 
+    app.port = 8080
+
     @app.post("/items", response_model=Item)
     def create_item(item: ItemCreate):
         # Firestoreにデータを保存

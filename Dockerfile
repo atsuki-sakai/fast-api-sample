@@ -1,12 +1,9 @@
-
 FROM python:3.10-slim
-
 WORKDIR /app
-
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
-
 COPY . .
-
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENV PORT=8080
+ENV REDIS_HOST=your-redis-host
+ENV REDIS_PORT=6379
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
