@@ -16,6 +16,61 @@
 
 ---
 
+## **ローカル開発**
+
+### **1. リポジトリをクローン**
+リポジトリをクローンし、プロジェクトフォルダに移動します：
+```bash
+git clone <repository-url>
+cd <project-folder>
+```
+
+### **2. 環境変数を設定**
+`.env.example`をコピーして`.env`ファイルを作成し、必要な環境変数を設定します：
+```bash
+cp .env.example .env
+```
+
+`.env`ファイルを編集し、以下の値を設定します：
+```env
+GOOGLE_APPLICATION_CREDENTIALS=/app/firestore-fastapi-service-account.json
+ENVIRONMENT=development
+```
+
+### **3. サービスアカウントキーの配置**
+1. GCPコンソールからサービスアカウントキー（JSON）をダウンロード
+2. プロジェクトのルートディレクトリに`firestore-fastapi-service-account.json`として配置
+
+### **4. アプリケーションの起動**
+Docker Composeを使用してアプリケーションを起動します：
+```bash
+docker compose up
+```
+
+これにより以下のサービスが起動します：
+- FastAPI アプリケーション（http://localhost:8000）
+- Redisキャッシュサーバー
+
+### **5. APIの確認**
+以下のURLでAPIにアクセスできます：
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+- API エンドポイント: http://localhost:8000/items
+
+### **6. 開発用コマンド**
+```bash
+# コンテナのログを確認
+docker compose logs -f
+
+# コンテナを停止
+docker compose down
+
+# コンテナを再ビルドして起動
+docker compose up --build
+```
+
+---
+
 ## **前提条件**
 
 ### **1. GCPのセットアップ**

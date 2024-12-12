@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from app.models import Item, ItemCreate
 from app.database import get_firestore_client
 from typing import List
-from datetime import datetime
+from datetime import datetime, timezone
 import redis
 import json
 
@@ -22,7 +22,8 @@ def create_app() -> FastAPI:
         # Firestoreにデータを保存
         doc_ref = db.collection(collection_name).document()
         data = item.dict()
-        data["created_at"] = datetime.utcnow()
+        created_at = datetime.now(timezone.utc)
+        data["created_at"] = created_at.isoformat()  # datetime を ISO 8601 文字列に変換
         doc_ref.set(data)
 
         # Redisキャッシュを更新
