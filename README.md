@@ -141,6 +141,20 @@ http://127.0.0.1:8000/docs
 ```plaintext
 http://127.0.0.1:8000/openapi.json
 ```
+Difyでこのスキーマを使用する場合は以下を追加して下さい。
+```
+"openapi": "3.1.0",
+  "info": {
+  "title": "Firestore CRUD API",
+  "version": "1.0.0"
+},
+"servers": [
+  {
+    "url": "<APIのエンドポイントのURL>"
+  }
+],
+"paths": {}
+```
 
 ### **6. OpenAPIスキーマのダウンロード**
 OpenAPIスキーマをローカルに保存するには以下のコマンドを実行します：
