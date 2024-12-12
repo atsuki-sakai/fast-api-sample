@@ -23,7 +23,7 @@ def create_app() -> FastAPI:
         doc_ref = db.collection(collection_name).document()
         data = item.dict()
         created_at = datetime.now(timezone.utc)
-        data["created_at"] = created_at.isoformat()  # datetime を ISO 8601 文字列に変換
+        data["created_at"] = created_at.isoformat() 
         doc_ref.set(data)
 
         # Redisキャッシュを更新

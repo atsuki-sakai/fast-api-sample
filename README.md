@@ -2,6 +2,10 @@
 
 このREADMEは、Firestoreと連携するFastAPIアプリケーションをGoogle Cloud Platform (GCP)にデプロイするまでの手順を詳しく説明します。また、よくあるエラーやその解決方法についても記載しています。
 
+用途:
+・Difyのカスタムツールの作成
+・firestoreをDBとしたバックエンドサーバー
+
 ---
 
 ## **プロジェクト概要**
