@@ -16,7 +16,6 @@
 - **Artifact Registry**: Dockerイメージの保存。
 - **Firestore Security Rules**: Firestoreアクセスのセキュリティ確保。
 - **OpenAPI (Swagger)**: APIスキーマのドキュメント化。
-- **Redisキャッシュ統合**: 高速なデータアクセスを提供。
 
 ---
 
@@ -53,7 +52,6 @@ docker compose up
 
 これにより以下のサービスが起動します：
 - FastAPI アプリケーション（http://localhost:8000）
-- Redisキャッシュサーバー
 
 ### **5. APIの確認**
 以下のURLでAPIにアクセスできます：
@@ -204,15 +202,6 @@ docker run -d --name redis-test -p 6379:6379 redis
 ```bash
 pytest
 ```
-
-### **4. テスト用Redisの停止と削除**
-テストが完了したらRedisコンテナを停止して削除します：
-
-```bash
-docker stop redis-test && docker rm redis-test
-```
-
----
 
 ## **GCPへのデプロイ**
 
